@@ -1,0 +1,10 @@
+{
+    "name": "server_config",
+    "saltKey": "7XWMARWJJgohcoLRrPJOwkjSbgFetechxdBs8ddoRwvRyYo",
+    "mongodbPath": "mongodb://localhost",
+    "dbName": "rk",
+    "allowedHosts": ["http://localhost:9000"],
+    "client": "http://localhost:9000",
+    "serverPort": 3100,
+    "websocketPort": 1234
+}

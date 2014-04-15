@@ -1,0 +1,22 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "jquery": "~1.9.0",
+    "underscore": "~1.4.3",
+    "backbone": "~1.0.0",
+    "requirejs": "~2.1.5",
+    "requirejs-text": "~2.0.10",
+    "requirejs-plugins": "v1.0.2",
+    "modernizr": "~2.6.2",
+    "jquery.transit": "v0.9.9",
+    "messenger": "~1.3.5",
+    "bootstrap-select": "1.3.5",
+    "jquery.serializeJSON": "~1.0.1",
+    "socket.io-client": "~0.9.15",
+    "momentjs": "~2.4.0",
+    "highcharts": "v3.0.7"
+  },
+  "devDependencies": {}
+}

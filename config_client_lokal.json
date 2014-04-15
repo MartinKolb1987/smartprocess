@@ -1,0 +1,7 @@
+{
+	"appName": "Informationssystem",
+	"version": "0.0.1",
+	"frontendUrl": "http://localhost:9000",
+	"nodeUrl": "http://localhost:3100",
+	"websocketUrl": "http://localhost:1234"
+}

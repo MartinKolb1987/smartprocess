@@ -1,0 +1,862 @@
+$icon-font-path: "fonts/sass-bootstrap/";
+
+@import 'sass-bootstrap/lib/bootstrap';
+@import './bootstrap_select';
+@import './messenger';
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* new labels */
+.btn-low{
+    background: #e9e60b;
+    border: #e3e00b;
+    &:hover{
+        background: #e3e00b;
+    }
+}
+
+.label-low, .custom-info-label-low, .custom-info-label-warning, .custom-info-label-danger, .custom-info-label-open, .custom-info-label-in-progress, .custom-info-label-closed{
+    background: #e9e60b;
+    border: #e3e00b;
+    color: white;
+}
+
+.custom-info-label-warning{
+    background: #f0ad4e;
+    border: #e6a64c;
+}
+
+.custom-info-label-danger{
+    background: #d9534f;
+    border: #d43f3a;
+}
+
+.custom-info-label-open{
+    background: #5cb85c;
+    border: #58b158;
+}
+
+.custom-info-label-in-progress{
+    background: #5bc0de;
+    border: #56b7d4;
+}
+
+.custom-info-label-closed{
+    background: #999999;
+    border: #8f8f8f;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border: 0;
+        background: none;
+    }
+}
+
+// -------------------------------
+// own styles
+// -------------------------------
+
+// -------------------------------
+// variables
+// -------------------------------
+$white: #ffffff;
+$dirtyWhite: #fbfbfb;
+$lightGray: #e1e4e6;
+$middleLightGray: #eeeeee;
+$gray: #bcbcbc;
+$darkGray: #5b6065;
+$darkDarkGray: #404040;
+$lightBlack: #232323;
+$blue: #428bca;
+$textColor: #333333;
+
+// -------------------------------
+// mixins
+// -------------------------------
+@mixin transition($property, $duration) {
+    -webkit-transition: $property $duration;
+    -moz-transition: $property $duration;
+    -ms-transition: $property $duration;
+    -o-transition: $property $duration;
+    transition: $property $duration;
+}
+
+// -------------------------------
+// body
+// -------------------------------
+body{
+    background-color: $middleLightGray;
+    padding-top: 0px;
+    // background: url(../images/background_2.jpg) no-repeat;
+    // background-size: cover;
+
+    #loader{
+        width: 120%;
+        height: 0;
+        margin-bottom: 0;
+        margin-left: -5px;
+        position: fixed;
+        z-index: 1;
+        margin-top: 60px;
+    }
+
+    .container{
+        padding-left: 0;
+    }
+
+    .icon-button{
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background-color: $lightGray; 
+        border-left: 1px solid $gray;
+        color: $darkGray;
+
+        a{
+            height: 60px;
+            display: block;
+        }
+
+        &.dark{
+            background-color: $gray;
+            a{
+                color: $darkGray;
+            }
+        }
+
+        &:hover, &.active{
+            background-color: $darkGray;
+            color: $white;
+            cursor: pointer;
+
+            a{
+                color: $white;
+            }
+        }
+
+        span{
+            font-size: 20px;
+            padding-top: 17px;
+        }
+    }
+
+    // margin-right: 20px;
+    .panel-wrapper{
+        padding: 0px 10px 0px 5px;
+
+        .panel{
+            .glyphicon{
+                margin-right: 10px;
+            }
+
+            .btn{
+                float: right;
+            }
+        }
+    } 
+        
+
+}
+
+#header{
+    margin-top: -10px;
+    background-color: $darkDarkGray;
+    display: block;
+    min-height: 70px;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+
+    .header-nav{
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+
+
+        li{
+            @include transition(all, 0.5s);
+            min-width: 250px;
+            text-align: center;
+            color: $blue;
+            float: left;
+            display: block;
+            height: 70px;
+            line-height: 60px;
+            padding: 10px 30px 10px 30px;
+
+            a{
+                color: $blue;
+                text-decoration: none;
+                display: block;
+            }
+
+            &:hover, &.active{
+                background-color: $blue;
+                cursor: pointer;
+                color: $white;
+
+                a{
+                    color: $white;
+                }
+            }
+        }
+
+    }
+
+    // -------------------------------
+    // app nav left
+    // -------------------------------
+    #left-nav{
+        display: none;
+        width: 250px;
+        height: 100%;
+        background-color: $dirtyWhite;
+        border-right: 1px solid lightGray;
+        position: fixed;
+        margin-top: 70px;
+        z-index: 5;
+
+        .list-group-item{
+            display: inline-block;
+            width: 100%;
+            border-radius: 0;
+            border: 0;
+            border-top: 1px solid $lightGray;
+            background-color: $dirtyWhite;
+            padding: 0;
+
+            .glyphicon{
+                margin-right: 15px;
+            }
+
+            .badge{
+                margin-top: 10px;
+                background-color: $darkGray;
+                float: right;
+            }
+
+            a{
+                min-height: 40px;
+                line-height: 40px;
+                padding: 10px 15px;
+                padding-left: 30px;
+                display: block;
+                color: $darkDarkGray;
+                text-decoration: none;
+            }
+
+            &:first-child{
+                border-top: 0;
+            }
+
+            &.active{
+                @include transition(all, 1s); 
+                background-color: $gray;
+
+                &:hover{
+                    background-color: $gray;
+                }
+
+            }
+
+            &:hover{
+                background-color: #dcdcdc;
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+    .right, .left{
+        position: fixed;
+        top: 0;
+        right: 0;
+        list-style: none;
+        float: right;
+        height: 60px;
+        line-height: 60px;
+        color: $lightGray;
+
+        li{
+            float: left;
+
+            &#user{
+                // display: none;
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .left{
+        left: -40px;
+        display: none;
+    }
+
+    .right{
+        display: none;
+    }
+}
+
+#app-wrapper{
+    #app-content-wrapper{
+        &.window-resize{
+            @include transition(all, 0.5s);
+        }
+        right: 0;
+        display: block;
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+
+        // -------------------------------
+        // breadcrumb & tool links
+        // -------------------------------
+        #breadcrumb-wrapper, #tool-links{
+            width: 100%;
+            .breadcrumb{
+                display: none;
+                line-height: 30px;
+                padding-top: 10px;
+                background-color: $lightGray;
+                border-radius: 0px;
+                margin-bottom: 0px;
+                
+                li{
+                    // text-transform: uppercase;
+                }
+
+                li:last-child{
+                    // background: #000;
+                }
+            }
+        }
+
+        #tool-links{
+            // display: none;
+            position: fixed;
+            z-index: 4;
+            bottom: 0;
+            right: 0;
+            margin-bottom: 0;
+            background-color: $lightGray;
+            height: 60px;
+            
+            ul{
+                display: block;
+                float: right;
+                list-style: none;
+                li{
+                    float: left;
+                }
+            }
+        }
+
+        #app-content{
+            overflow-y: auto;
+            height: 100%;
+            padding: 20px 20px 110px 20px;
+
+            // -------------------------------
+            // app login
+            // -------------------------------
+            #app-login{
+                .jumbotron{
+                    display: block;
+
+                    .sign-in{
+                        max-width: 400px;
+                        margin: 0 auto;
+                        .form-control{
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// -------------------------------
+// dashboard
+// -------------------------------
+#dashboard{
+    .panel-body{
+        .right{
+            float: right;
+            .btn{
+                margin-left: 5px;
+                float: none;
+            }
+        }
+    }
+}
+
+// -------------------------------
+// quality
+// -------------------------------
+#quality{
+    .panel-body{
+        .right{
+            float: right;
+            .btn{
+                margin-left: 5px;
+                float: none;
+            }
+        }
+    }
+}
+
+// -------------------------------
+// support overview
+// -------------------------------
+#support-overview{
+    .panel-body{
+        .right{
+            float: right;
+            .btn{
+                margin-left: 5px;
+                float: none;
+            }
+        }
+    }
+}
+
+// -------------------------------
+// add ticket
+// -------------------------------
+#add-ticket{
+    .row{
+        margin-bottom: 10px;
+    }
+    .input-group{
+        margin-bottom: 10px;
+        width: 100%;
+
+        .input-group-addon{
+            width: 150px;
+            text-align: left;
+        }
+    }
+}
+
+// -------------------------------
+// ticket overview
+// -------------------------------
+#ticket-overview{
+    .sort{
+        float: right;
+        margin-top: -26px;
+        margin-right: -12px;
+        width: 140px;
+    }
+    #tickets{
+        list-style: none;
+        padding: 0;
+        .item{
+            .ticket-info{
+                .date{
+                    font-weight: bold;
+                    display: block;
+                }
+            }
+            .panel{
+                padding-left: 0;
+                padding-right: 0;
+                color: $textColor;
+
+                .panel-body{
+                    &:hover{
+                        background: #f5f5f5;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .priority{
+                float: left;
+                margin-right: 15px;
+                span{
+                    font-size: 14px;
+                    font-weight: normal;    
+                }
+            }
+            .short-description{
+                float: left;
+            }
+            .state{
+                float: right;
+                span{
+                    font-size: 14px;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
+
+// -------------------------------
+// ticket detail view
+// -------------------------------
+#ticket-detail{
+    .head-wrapper{
+        .panel-wrapper{
+            &.head{
+                padding: 0;
+            }
+            .alert, .panel{
+                border-radius: 0px;
+                border: 0;
+                .right{
+                    text-align: right;
+                }
+            }
+        }
+    }
+    .panel-heading{
+        .ticket-id{
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+    }
+
+    .form-control[disabled]{
+        background: white;
+        cursor: default;
+    }
+
+    .no-padding{
+        padding: 0;
+        .well{
+            margin-bottom: 10px;
+            .display-block{
+                display: block;
+            }
+        }
+        .edit-ticket{
+            float: left;
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+
+        }
+    }
+
+    #edit-ticket-wrapper{
+        &.closed{
+            opacity: 0;
+        }
+        .row{
+            margin-bottom: 10px;
+
+            .input-group-addon{
+                padding-right: 6px;
+            }
+        }
+        .right{
+            float: right;
+            button{
+                margin: 0 0 10px 5px;
+                float: none;
+            }
+        }
+    }
+
+    #modal-background{
+        opacity: 0;
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        background-color: $lightGray;
+        z-index: 9;
+        top: 0;
+        bottom: 0;
+    }
+    #close-ticket-modal{
+        opacity: 0;
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        top: 0;
+        bottom: 0;
+        #dialog-wrapper{
+            opacity: 1;
+            margin: 30px auto;
+            width: 400px;
+            .panel-footer{
+                text-align: right;
+                button{
+                    margin-left: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+
+// -------------------------------
+// quality overview
+// -------------------------------
+#quality-overview{
+    .panel-body{
+        .right{
+            float: right;
+            .btn{
+                margin-left: 5px;
+                float: none;
+            }
+        }
+    }
+}
+
+// -------------------------------
+// small device
+// -------------------------------
+@media only screen and (max-width: 750px) {
+
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border: 0;
+        background: none;
+    }
+
+    #header{
+        .left{
+            display: block;
+        }
+
+        #nav-wrapper{
+            width: 250px;
+            left: -250px;
+            top: 60px;
+            bottom: 0;
+            position: fixed;
+            display: block;
+            text-align: left;
+            overflow-y: auto;
+
+            .header-nav{
+                li{
+                    height: 60px;
+                    background-color: $darkDarkGray;
+                    float: none;
+                    width: 100%;
+                    display: inline-block;
+                    text-align: left;
+                    line-height: 40px;
+                    padding-left: 30px;
+                    border: 0;
+
+                    &:hover, &.active{
+                        background-color: $blue;
+                    }
+                }
+            }
+
+            #left-nav{
+                margin-top: 0;
+                position: relative;
+            }
+        }
+
+    }
+
+    #app-wrapper{
+        #app-content-wrapper{
+            top: 60px;
+        }
+    }
+
+    // -------------------------------
+    // dashboard
+    // -------------------------------
+    #dashboard{
+        .panel-body{
+            .right{
+                width: 100%;
+                .btn{
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+        }
+    }
+
+    // -------------------------------
+    // support overview
+    // -------------------------------
+    #support-overview{
+        .panel-body{
+            .right{
+                width: 100%;
+                .btn{
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+        }
+    }
+
+    // -------------------------------
+    // add ticket
+    // -------------------------------
+    #add-ticket{
+        .btn{
+            width: 100%;
+        }
+    }
+    // -------------------------------
+    // ticket overview
+    // -------------------------------
+    #ticket-overview{
+
+        #tickets{
+            list-style: none;
+            padding: 0;
+            .item{
+                .ticket-info{
+                    margin-bottom: 5px;
+                }
+                .priority{
+                    margin-right: 15px;
+                    margin-bottom: 10px;
+                }
+                .state{
+                    margin-top: 10px;
+                    float: right;
+                }
+            }
+        }
+    }
+
+    // -------------------------------
+    // ticket detail view
+    // -------------------------------
+    #ticket-detail{
+
+        h5{
+            margin-top: 35px;
+        }
+
+        #edit-ticket-wrapper{
+            .right{
+                width: 100%;
+                button{
+                    margin-left: 0;
+                    width: 100%;
+                }
+            }
+        }
+        #close-ticket-modal{
+            #dialog-wrapper{
+                width: 250px;
+                .panel-footer{
+                    button{
+                        width: 100%;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -------------------------------
+    // quality overview
+    // -------------------------------
+    #quality-overview{
+        .panel-body{
+            .right{
+                width: 100%;
+                .btn{
+                    width: 100%;
+                    margin: 0 0 10px 0;
+                }
+            }
+        }
+    }
+}
+
+

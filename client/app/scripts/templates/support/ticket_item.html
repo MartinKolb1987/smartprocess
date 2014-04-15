@@ -1,0 +1,37 @@
+<li class="item" data-state="<%= data.state %>" data-priority="<%= data.priority %>">
+	<div class="ticket-info col-md-2 col-lg-1">
+		<span class="date"><%= publish[0] %></span>
+		<span class="time"><%= publish[1] %> Uhr</span>
+	</div>
+	<a href="#support/tickets/<%= data._id %>/">
+		<div class="panel panel-default col-md-10 col-lg-11">
+		  <div class="panel-body">
+		  	<div class="priority">
+		  		<% if(data.priority === 'low') { %>
+					<span class="label label-low right">niedrig</span>
+				<% } else if(data.priority === 'medium') { %>
+					<span class="label label-warning right">mittel</span>
+				<% } else { %>
+					<span class="label label-danger right">hoch</span>
+				<% } %>
+		  	</div>
+		  	<div class="short-description">
+				<strong>Maschine: <%= data.machine %> -
+				Modul: <%= data.module %></strong> -
+				(<%= data.employeName %>)
+		  	</div>
+			<div class="state">
+				<% if(data.state === 'open') { %>
+					<span class="label label-success right">offen</span>
+				<% } else if(data.state === 'in-progress') { %>
+					<span class="label label-info right">in Bearb. 
+						<% if(data.ticketEdit) { %> von <%= data.ticketEdit.employeName %> <% } %>
+					</span>
+				<% } else { %>
+					<span class="label label-default right">erledigt</span>
+				<% } %>
+			</div>
+		  </div>
+		</div>
+	</a>
+</li>

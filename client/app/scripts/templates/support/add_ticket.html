@@ -1,0 +1,121 @@
+<div id="add-ticket">
+	<div class="panel-wrapper col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-wrench"></span>Störung aufgeben</h3>
+			</div>
+			<div class="panel-body">
+				<form id="add-ticket-form" action="#" method="post">
+					<div class="row">
+						<div class="col-md-2">Maschine</div>
+						<div class="col-md-10">
+							<!-- <select name="machine" class="selectpicker  show-tick" data-live-search="true"> -->
+							<select name="machine" class="selectpicker  show-tick">
+								<option value="">-- bitte auswählen --</option>
+								<option value="1">Maschine 1</option>
+								<!-- <option data-divider="true"></option> -->
+								<option value="2">Maschine 2</option>
+								<option value="3">Maschine 3</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">Modul</div>
+						<div class="col-md-10">
+							<select name="module" class="selectpicker  show-tick">
+								<option value="">-- bitte auswählen --</option>
+								<option value="1">Modul 1</option>
+								<option value="2">Modul 2</option>
+								<option value="3">Modul 3</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">Priorität</div>
+						<div class="col-md-10">
+							<select name="priority" class="selectpicker show-tick priority">
+								<option value="" class="btn-default">-- bitte auswählen --</option>
+								<option value="low" class="btn-low">niedrig</option>
+								<option value="medium" class="btn-warning">mittel</option>
+								<option value="high" class="btn-danger">hoch</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">Mitarbeiter</div>
+						<div class="col-md-10">
+							<select name="employeName" class="selectpicker  show-tick" data-live-search="true">
+								<option value="">-- bitte auswählen --</option>
+								<option value="Peter Huber">Peter Huber</option>
+								<option value="Josef Müller">Josef Müller</option>
+								<option value="Martin Kolb">Martin Kolb</option>
+								<option value="Klara Maier">Klara Maier</option>
+								<option value="Christoph Adam">Christoph Adam</option>
+								<option value="Sepp Maier">Sepp Maier</option>
+								<option value="Benjamin Rauch">Benjamin Rauch</option>
+								<option value="Stefanie Kreuz">Stefanie Kreuz</option>
+								<option value="Steve Jobs">Steve Jobs</option>
+								<option value="Tobias Lindinger">Tobias Lindinger</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">Beschreibung</div>
+						<div class="col-md-10">
+					  		<textarea name="description" class="form-control" rows="6" placeholder="Kurze Störungsbeschreibung (max. 300 Zeichen)"></textarea>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-primary" name="submit" value="Störung aufgeben"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="panel-wrapper col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-info-sign"></span>Hinweis Prioritäten</h3>
+			</div>
+			<div class="panel-body">
+				<div class="panel-group" id="accordion">
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <span class="label label-low">Priorität niedrig</span>
+				      </h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				      	Maschine läuft im vorgeschriebenen Arbeitstempo z. B. Glühbirne kaputt
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <span class="label label-warning">Priorität mittel</span>
+				      </h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				        Maschine läuft eingeschränkt. Z. B. Handlingmodul defekt. Händische Nachführung möglich.
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <span class="label label-danger">Priorität hoch</span>
+				      </h4>
+				    </div>
+				    <div id="collapseThree" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				        Maschine steht. Betrieb nicht möglich.
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,163 @@
+<div id="ticket-detail">
+	<div class="panel-wrapper col-md-12 head-wrapper clearfix">
+		<div class="panel-wrapper col-md-2 head">
+	  		<% if(data.priority === 'low') { %>
+				<div class="alert custom-info-label-low">
+					Priorität: Niedrig
+				</div>
+			<% } else if(data.priority === 'medium') { %>
+				<div class="alert custom-info-label-warning">
+					Priorität: Mittel
+				</div>
+			<% } else { %>
+				<div class="alert custom-info-label-danger">
+					Priorität: Hoch
+				</div>
+			<% } %>
+		</div>
+		<div class="panel-wrapper col-md-2 head">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					Maschine: <b><%= data.machine %></b>
+				</div>
+			</div>
+		</div>
+		<div class="panel-wrapper col-md-2 head">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					Modul: <b><%= data.module %></b>
+				</div>
+			</div>
+		</div>
+		<div class="panel-wrapper col-md-4 head">
+			<div class="panel panel-default">
+				<!-- <div class="panel-body right"> -->
+				<div class="panel-body">
+					aufgegeben am <%= publishDate %><b>,</b> <%= publishTime %> Uhr
+				</div>
+			</div>
+		</div>
+		<div class="panel-wrapper col-md-2 head">
+	  		<% if(data.state === 'open') { %>
+				<div class="alert custom-info-label-open">
+					Status<b>:</b> offen
+				</div>
+			<% } else if(data.state === 'in-progress') { %>
+				<div class="alert custom-info-label-in-progress">
+					Status<b>:</b> in Bearbeitung
+				</div>
+			<% } else { %>
+				<div class="alert custom-info-label-closed">
+					Status<b>:</b> erledigt
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+	<div class="panel-wrapper col-md-12 clearfix">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-wrench"></span>Störung Detail</h3> <span class="ticket-id">Ticket-Id: <%= data._id %></span>
+			</div>
+			<div class="panel-body clearfix">
+				<div class="col-md-4 no-padding">
+					<div class="well">
+						<span class="glyphicon glyphicon-user"></span> Aufgegeben von <%= data.employeName %><br>
+						<span class="glyphicon glyphicon-calendar"></span> am <%= publishDate %>, <%= publishTime %> Uhr<br>
+					</div>
+					<div class="col-md-12 no-padding">
+						<% if(data.state === 'open') { %> 
+							<button type="button" class="btn btn-default edit-ticket"><span class="glyphicon glyphicon-edit"></span> Störungsticket bearbeiten</button>
+						<% } %>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<h5>Beschreibung:</h5>
+			  		<%= data.description %>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+	<div class="panel-wrapper col-md-12 <% if(data.state === 'open') { %>closed<% } %>" id="edit-ticket-wrapper">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-edit"></span>Störung bearbeiten</h3>
+			</div>
+			<div class="panel-body clearfix">
+				<form id="edit-ticket-form" action="#" method="post" data-ticket-id="<%= data._id%>">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-4">Wir bearbeitet von</div>
+							<div class="col-md-8">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
+									<input name="employeName" type="hidden" class="form-control" value="Max Mustermann" value="<% if(data.ticketEdit) { %><%= data.ticketEdit.employeName %><% } %>">
+									<input type="text" class="form-control" value="Max Mustermann" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">Verwendete Ersatzteile</div>
+							<div class="col-md-8">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-cog"></span></span>
+									<input name="replacement" type="text" class="form-control" placeholder="z.B. Schraube, Lampe" value="<% if(data.ticketEdit) { %><%= data.ticketEdit.replacement %><% } %>" <% if(data.state === 'closed') { %>disabled<% } %>>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">Wert aller Ersatzteile</div>
+							<div class="col-md-8">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-euro"></span></span>
+									<input name="replacementWorth" type="text" class="form-control" placeholder="z.B. 1000,00" value="<% if(data.ticketEdit) { %><%= data.ticketEdit.replacementWorth %><% } %>" <% if(data.state === 'closed') { %>disabled<% } %>>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">Stillstandsdauer (Min.)</div>
+							<div class="col-md-8">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+									<input name="stagnationTime" type="text" class="form-control" placeholder="z.B. 15" value="<% if(data.ticketEdit) { %><%= data.ticketEdit.stagnationTime %><% } %>" <% if(data.state === 'closed') { %>disabled<% } %>>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+						  		<textarea name="description" class="form-control" rows="8" placeholder="Fehlerbericht"  <% if(data.state === 'closed') { %>disabled<% } %>><% if(data.ticketEdit) { %><%=data.ticketEdit.description %><% } %></textarea>
+							</div>
+						</div>
+						<% if(data.state !== 'closed') { %> 
+							<div class="right">
+								<button class="btn btn-primary" id="submit-edit">Bearbeitung speichern</button>
+								<button class="btn btn-default" id="submit-close">Ticket abschließen</button>
+							</div>
+						<% } %>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- modal -->
+	<div id="close-ticket-modal" data-ticket-id="<%= data._id %>">
+	 	<div id="dialog-wrapper">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ticket abschließen?</h3>
+				</div>
+				<div class="panel-body">
+					Sind Sie sicher dass Sie das Ticket abschließen möchten? Eine weitere Bearbeitung ist danach <b>nicht</b> mehr möglich!
+				</div>
+				<div class="panel-footer">
+					<button class="btn btn-default" id="submit-close-cancel"><span class="glyphicon glyphicon-remove"></span> nein</button>
+					<button class="btn btn-success" id="submit-close-go"><span class="glyphicon glyphicon-ok"></span> ja</button>
+				</div>
+			</div>
+	 	</div> 
+	</div>
+	<div id="modal-background"></div>
+</div>

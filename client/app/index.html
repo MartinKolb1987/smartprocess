@@ -1,0 +1,77 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>client</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- loader -->
+        <div id="loader" class="progress progress-striped active">
+            <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        </div>
+        <!-- END loader -->
+
+        <div class="container">
+            <!-- header --> 
+            <div id="header">
+                <ul class="left">
+                    <li id="submenu" class="icon-button dark"><span class="glyphicon glyphicon-list"></span></li>
+                </ul>
+                <nav id="nav-wrapper">
+                    <ul class="header-nav">
+                        <li class="active"><a href="#standort">Musterfirma</a></li>
+                    </ul>
+                    <div id="left-nav">
+                        <!-- left nav rendered here -->
+                    </div>
+                </nav>
+                <ul class="right">
+                    <li id="user">Max Mustermann<!-- username rendered here --></li>
+                    <li id="logout" class="icon-button dark"><a href="#"><span class="glyphicon glyphicon-off"></span></a></li>
+                </ul>
+            </div>
+            <!-- END header -->
+
+            <!-- app wrapper -->
+            <div id="app-wrapper">
+                <div id="app-content-wrapper">
+                    <div id="breadcrumb-wrapper">
+                        <ol class="breadcrumb">
+                            <!-- breadcrumb rendered here -->
+                        </ol>
+                    </div>
+                    <div id="app-content">
+                        <!-- content rendered here -->
+                    </div>
+                    <div id="tool-links">
+                        <ul>
+                            <!-- tool-links rendered here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- END app wrapper -->
+        </div>
+
+        <!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
